@@ -2,8 +2,8 @@ public class Girokonto extends Konto{
 
     private int dispo; 
   
-    public Girokonto(int kontonr, int saldo, int dispo){
-      super(kontonr, saldo);
+    public Girokonto(int kontonr, int saldo, int dispo, Kunde inhaber){
+      super(kontonr, saldo, inhaber);
       this.dispo = dispo; 
     }
   
