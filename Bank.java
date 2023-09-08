@@ -1,5 +1,6 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.ArrayList; 
+import java.util.List; 
+import java.util.*; 
 
 public class Bank{
 
@@ -31,19 +32,22 @@ public class Bank{
       kundenanzahl++; 
     }
 
-    public void neuesKonto(int saldo, Kunde inhaber){
+    public void neuesKonto(int saldo, Kunde inhaber, char art, int dispo, int zinssatz){
       int kontonr = kontenanzahl+2001; 
       List<Kunde> kundenList = new ArrayList<>();
       for (int i = 0; i< kunden.length; i++){
         kundenList.add(kunden[i]);
       }
       if (kundenList.contains(inhaber)){
-        konten[kontenanzahl] = new Konto(kontonr, saldo, inhaber);
-        kontenanzahl++;
+        if (art == 'G'){
+          konten[kontenanzahl] = new Girokonto(kontonr, saldo, dispo, inhaber);
+          kontenanzahl++; 
+        } else if (art == 'S'){
+          konten[kontenanzahl] = new Sparkonto(kontonr, saldo, zinssatz, inhaber);
+          kontenanzahl++;
+        }
       }else {
         System.out.println("Dieser Kunde existiert nicht und sie können somit kein Koto in seinem Namen anlegen!");
       }
-      
-    }
-    
+    }    
   }
