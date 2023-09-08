@@ -41,10 +41,12 @@ public class Bank{
         if (art == 'G'){
           int kontonr = kontenanzahl+200000;
           konten[kontenanzahl] = new Girokonto(kontonr, 0, dispo, inhaber);
+          inhaber.setGiro(konten[kontenanzahl]);
           kontenanzahl++; 
         } else if (art == 'S'){
           int kontonr = kontenanzahl+300000;
           konten[kontenanzahl] = new Sparkonto(kontonr, 0, zinssatz, inhaber);
+          inhaber.setSpar(konten[kontenanzahl]);
           kontenanzahl++;
         }
       }else {
@@ -52,15 +54,19 @@ public class Bank{
       }
     }
 
-    for (int i = o; i< kunden.length+1; i++){
-      
+    public void einzahlen(int betrag, int kontonr){
+      boolean gefunden = false;
+      for (int i = 0; i<= konten.length; i++){
+        if (konten[i].getKontonr() == kontonr){
+            konten[i].setSaldo(konten[i].getSaldo() + betrag);
+            System.out.println("Der Betrag von " + betrag + " Euro wurde auf ihr Konto überwiesen!");
+            gefunden = true;
+        } 
+        if (i == konten.length && gefunden == false){
+          System.out.println("Unter dieser Kontonummer können wir kein Konto in unserem System finden!");
+        }
+      } 
+
     }
 
-    public void neuesKontoZwei(char art, int kundennr){
-      if (art == 'g'){
-        konten[kontenanzahl] = new Girokonto();
-      }else if (art == 's'){
-        konten[kontenanzahl] = new Sparkonto();
-      }
-    }
   }

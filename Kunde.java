@@ -5,8 +5,8 @@ public class Kunde{
     private int gebDat;
     private int kundennr;  
     private String adresse;
-    private Konto konto1 = new Konto(12345, 120, null);
-    private Konto konto2 = new Konto(23456, 120, null);
+    private Girokonto giro; 
+    private Sparkonto spar; 
 
   
     public Kunde(String name, String vorname, int kundennr, String adresse, int gebDat){
@@ -15,6 +15,8 @@ public class Kunde{
       this.kundennr = kundennr;  
       this.adresse = adresse;
       this.gebDat = gebDat;
+      giro = null;
+      spar = null; 
       
     }
     public String getName(){return name;}
@@ -22,11 +24,15 @@ public class Kunde{
     public String getAdresse(){return adresse;}
     public int getGebDat(){return gebDat;}
     public int getKundennr(){return kundennr;}
+    public Girokonto getGiro(){return giro;}
+    public Sparkonto getSpar(){return spar;}
     public void setName(String name){this.name = name;}
     public void setAdresse(String adresse){this.adresse = adresse;}
     public void setVorname(String vorname){this.vorname = vorname;}
     public void setKundennr(int kundennr){this.kundennr = kundennr;}
     public void setGebDat(int gebDat){this.gebDat = gebDat;}
+    public void setGiro(Girokonto giro){this.giro = giro;}
+    public void setSpar(Sparkonto spar){this.spar = spar;}
 
     public void auszahlen(int betrag, int kontonr){
         if (kontonr == konto1.getKontonr()){
